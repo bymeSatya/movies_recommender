@@ -24,6 +24,7 @@ def recommender(movie):
     distances = similarity[movie_index]
     movie_list = sorted(list(enumerate(similarity[movie_index])),reverse = True,key = lambda x:x[1])[1:6]
     for i in movie_list:
+        st.write(i)
         recommended_list.append(movies_list.iloc[i[0]].title)
 
 if st.button('Recommend'):
