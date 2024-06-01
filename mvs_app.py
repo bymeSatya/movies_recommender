@@ -37,12 +37,12 @@ def recommender(movie):
 search_movies = []
 search_poster = []
 
-# def search_movie(movie):
-#     for i in range(len(movies_list)):
-#         if movies_list.iloc[i]['title'] == movie:
-#             search_movies.append(movies_list.iloc[i]['title'])
-#             search_poster.append(movies_list.iloc[i]['movie_id'])
-#     return search_movies,search_poster
+def search_movie(movie):
+    for i in range(len(movies_list)):
+        if movies_list.iloc[i]['title'] == movie:
+            search_movies.append(movies_list.iloc[i]['title'])
+            search_poster.append(movies_list.iloc[i]['movie_id'])
+    return search_movies,search_poster
 
 # if st.button('Search'):
 #     recommended_movie,recommended_poster = search_movie(selected_movie)
@@ -52,7 +52,7 @@ search_poster = []
 #             st.image(recommended_poster[0])
 
 if st.button('Recommend'):
-    recommended_movies,recommended_posters = recommender(selected_movie)
+    recommended_movies,recommended_posters = search_movie(selected_movie)
     col1, col2, col3,col4,col5 = st.columns(5)
     with col1:
             st.text(recommended_movies[0])
