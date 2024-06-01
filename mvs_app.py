@@ -46,9 +46,10 @@ def search_movie(movie):
 
 if st.button('Search'):
     recommended_movie,recommended_poster = search_movie(selected_movie)
-    with st.container():
-        st.text(recommended_movie[0])
-        st.image(recommended_poster[0])
+    col1, col2, col3,col4,col5 = st.columns(5)
+    with col1:
+            st.text(recommended_movie[0])
+            st.image(recommended_poster[0])
 
 if st.button('Recommend'):
     recommended_movies,recommended_posters = recommender(selected_movie)
