@@ -34,15 +34,17 @@ def recommender(movie):
         movie_posters.append(fetch_poster(movies_list.iloc[i[0]].movie_id))
         recommended_list.append(movies_list.iloc[i[0]].title)
     return recommended_list,movie_posters
-
+search_movie = []
+search_poster = []
 def search_movie(movie):
-    for i in movie_list:
-        movie_posters.append(fetch_poster(movies_list.iloc[i[0]].movie_id))
-        recommended_list.append(movies_list.iloc[i[0]].title)
-    return recommended_list,movie_posters
+    for i in range(len(movies_list)):
+    if movies_list.iloc[i]['title'] == movie:
+        search_movie.append(movies_list.iloc[i]['title'])
+        search_poster.append(movies_list.iloc[i]['movie_id'])
+    return search_movie,search_poster
 
 if st.button('Search'):
-    recommended_movies,recommended_posters = search_movie(selected_movie)
+    recommended_movie,recommended_poster = search_movie(selected_movie)
     col1 = st.columns(1)
     with col1:
             st.text(recommended_movies[0])
