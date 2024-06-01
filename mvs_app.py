@@ -38,9 +38,9 @@ search_movie = []
 search_poster = []
 def search_movie(movie):
     for i in range(len(movies_list)):
-    if movies_list.iloc[i]['title'] == movie:
-        search_movie.append(movies_list.iloc[i]['title'])
-        search_poster.append(movies_list.iloc[i]['movie_id'])
+        if movies_list.iloc[i]['title'] == movie:
+            search_movie.append(movies_list.iloc[i]['title'])
+            search_poster.append(movies_list.iloc[i]['movie_id'])
     return search_movie,search_poster
 
 if st.button('Search'):
