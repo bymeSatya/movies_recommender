@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import requests
 import ast
 import nltk
 from nltk.stem.porter import PorterStemmer
@@ -18,20 +19,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vectors)
 
 recommended_list = []
-movie_ids = []
+movie_posters = []
+
+def fetch_poster(movie_id):
+    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=e-US'.format(movie_id))
+    data = response.json()
+    return "https://image.tmdb.org/t/p/w500/"+data['poster_path']
 
 def recommender(movie):
     movie_index = movies_list[movies_list['title'] == movie].index[0]
     distances = similarity[movie_index]
     movie_list = sorted(list(enumerate(similarity[movie_index])),reverse = True,key = lambda x:x[1])[1:6]
     for i in movie_list:
-        movie_ids.append(movies_list.iloc[i[0]].movie_id)
+        movie_posters.append(fetch_poster(movies_list.iloc[i[0]].movie_id))
         recommended_list.append(movies_list.iloc[i[0]].title)
-    return recommended_list,movie_ids
+    return recommended_list,movie_posters
 
 if st.button('Recommend'):
-    recommended_movies,recommended_ids = recommender(selected_movie)
-    for i in recommended_movies:
-        st.write(i)
-    for j in recommended_ids:
-        st.write(j)
+    recommended_movies,recommended_posters = recommender(selected_movie)
+    col1, col2, col3,col4,col5 = st.columns(5)
+    for i in range(0,5):
+        with col+i:
+            st.header(recommended_movies[i])
+            st.image(recommended_posters[i])
