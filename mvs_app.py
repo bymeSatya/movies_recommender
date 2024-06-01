@@ -22,6 +22,6 @@ def recommender(movie):
     distances = similarity[movie_index]
     movie_list = sorted(list(enumerate(similarity[movie_index])),reverse = True,key = lambda x:x[1])[1:6]
     for i in movie_list:
-        print(new_df.iloc[i[0]].title)
+        print(movies_list.iloc[i[0]].title)
 
 recommender(selected_movie)
