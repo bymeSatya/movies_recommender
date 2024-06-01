@@ -17,11 +17,15 @@ vectors = cv.fit_transform(movies_list['tags']).toarray()
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vectors)
 
+recommended_list = []
+
 def recommender(movie):
     movie_index = movies_list[movies_list['title'] == movie].index[0]
     distances = similarity[movie_index]
     movie_list = sorted(list(enumerate(similarity[movie_index])),reverse = True,key = lambda x:x[1])[1:6]
     for i in movie_list:
-        print(movies_list.iloc[i[0]].title)
+        recommended_list.append(movies_list.iloc[i[0]].title)
 
-recommender(selected_movie)
+if st.button('Recommend'):
+    for i in recommended_list:
+        st.write(i)
