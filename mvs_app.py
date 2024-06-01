@@ -39,7 +39,7 @@ if st.button('Recommend'):
     recommended_movies,recommended_posters = recommender(selected_movie)
     col1, col2, col3,col4,col5 = st.columns(5)
     for i in range(0,5):
-        cols = col+i
+        cols = str(col+i)
         with cols:
             st.header(recommended_movies[i])
             st.image(recommended_posters[i])
