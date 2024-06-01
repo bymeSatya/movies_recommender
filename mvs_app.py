@@ -34,38 +34,38 @@ def recommender(movie):
         movie_posters.append(fetch_poster(movies_list.iloc[i[0]].movie_id))
         recommended_list.append(movies_list.iloc[i[0]].title)
     return recommended_list,movie_posters
-search_movies = []
-search_poster = []
+# search_movies = []
+# search_poster = []
 
-def search_movie(movie):
-    for i in range(len(movies_list)):
-        if movies_list.iloc[i]['title'] == str(movie):
-            search_movies.append(movies_list.iloc[i]['title'])
-            search_poster.append(movies_list.iloc[i]['movie_id'])
-    return search_movies,search_poster
+# def search_movie(movie):
+#     for i in range(len(movies_list)):
+#         if movies_list.iloc[i]['title'] == str(movie):
+#             search_movies.append(movies_list.iloc[i]['title'])
+#             search_poster.append(movies_list.iloc[i]['movie_id'])
+#     return search_movies,search_poster
 
-if st.button('Search'):
-    recommended_movie,recommended_poster = search_movie(selected_movie)
-    col1, col2, col3,col4,col5 = st.columns(5)
-    with col1:
-            st.text(recommended_movie[0])
-            st.image(recommended_poster[0])
-
-# if st.button('Recommend'):
-#     recommended_movies,recommended_posters = recommender(selected_movie)
+# if st.button('Search'):
+#     recommended_movie,recommended_poster = search_movie(selected_movie)
 #     col1, col2, col3,col4,col5 = st.columns(5)
 #     with col1:
-#             st.text(recommended_movies[0])
-#             st.image(recommended_posters[0])
-#     with col2:
-#             st.text(recommended_movies[1])
-#             st.image(recommended_posters[1])
-#     with col3:
-#             st.text(recommended_movies[2])
-#             st.image(recommended_posters[2])
-#     with col4:
-#             st.text(recommended_movies[3])
-#             st.image(recommended_posters[3])
-#     with col5:
-#             st.text(recommended_movies[4])
-#             st.image(recommended_posters[4])
+#             st.text(recommended_movie[0])
+#             st.image(recommended_poster[0])
+
+if st.button('Recommend'):
+    recommended_movies,recommended_posters = recommender(selected_movie)
+    col1, col2, col3,col4,col5 = st.columns(5)
+    with col1:
+            st.text(recommended_movies[0])
+            st.image(recommended_posters[0])
+    with col2:
+            st.text(recommended_movies[1])
+            st.image(recommended_posters[1])
+    with col3:
+            st.text(recommended_movies[2])
+            st.image(recommended_posters[2])
+    with col4:
+            st.text(recommended_movies[3])
+            st.image(recommended_posters[3])
+    with col5:
+            st.text(recommended_movies[4])
+            st.image(recommended_posters[4])
