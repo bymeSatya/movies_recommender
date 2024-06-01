@@ -18,16 +18,18 @@ from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vectors)
 
 recommended_list = []
+movie_ids = []
 
 def recommender(movie):
     movie_index = movies_list[movies_list['title'] == movie].index[0]
     distances = similarity[movie_index]
     movie_list = sorted(list(enumerate(similarity[movie_index])),reverse = True,key = lambda x:x[1])[1:6]
     for i in movie_list:
+        movie_ids.append(movies_list.iloc[i[0]].movie_id)
         recommended_list.append(movies_list.iloc[i[0]].title)
-    return recommended_list
+    return recommended_list,movie_ids
 
 if st.button('Recommend'):
-    recommended_movies = recommender(selected_movie)
-    for i in recommended_movies:
-        st.write(i)
+    recommended_movies,recommended_ids = recommender(selected_movie)
+    for i,j in recommended_movies,recommended_ids:
+        st.write(i,j)
