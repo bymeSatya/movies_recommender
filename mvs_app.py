@@ -31,5 +31,7 @@ def recommender(movie):
 
 if st.button('Recommend'):
     recommended_movies,recommended_ids = recommender(selected_movie)
-    for i,j in recommended_movies,recommended_ids:
-        st.write(i,j)
+    for i in recommended_movies:
+        st.write(i)
+    for j in recommended_ids:
+        st.write(j)
