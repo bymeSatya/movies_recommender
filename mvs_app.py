@@ -51,21 +51,21 @@ def recommender(movie):
 #             st.text(recommended_movie[0])
 #             st.image(recommended_poster[0])
 
-if st.button('Recommend'):
-    recommended_movies,recommended_posters = recommender(selected_movie)
-    col1, col2, col3,col4,col5 = st.columns(5)
-    with col1:
-            st.text(recommended_movies[0])
-            st.image(recommended_posters[0])
-    with col2:
-            st.text(recommended_movies[1])
-            st.image(recommended_posters[1])
-    with col3:
-            st.text(recommended_movies[2])
-            st.image(recommended_posters[2])
-    with col4:
-            st.text(recommended_movies[3])
-            st.image(recommended_posters[3])
-    with col5:
-            st.text(recommended_movies[4])
-            st.image(recommended_posters[4])
+#if st.button('Recommend'):
+recommended_movies,recommended_posters = recommender(selected_movie)
+col1, col2, col3,col4,col5 = st.columns(5)
+with col1:
+        st.text(recommended_movies[0])
+        st.image(recommended_posters[0])
+with col2:
+        st.text(recommended_movies[1])
+        st.image(recommended_posters[1])
+with col3:
+        st.text(recommended_movies[2])
+        st.image(recommended_posters[2])
+with col4:
+        st.text(recommended_movies[3])
+        st.image(recommended_posters[3])
+with col5:
+        st.text(recommended_movies[4])
+        st.image(recommended_posters[4])
